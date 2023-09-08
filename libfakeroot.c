@@ -117,6 +117,16 @@
  #endif
 #endif
 
+#ifndef _STAT_VER
+ #if defined (__aarch64__)
+  #define _STAT_VER 0
+ #elif defined (__x86_64__)
+  #define _STAT_VER 1
+ #else
+  #define _STAT_VER 3
+ #endif
+#endif
+
 /*
    These INT_* (which stands for internal) macros should always be used when
    the fakeroot library owns the storage of the stat variable.
