@@ -1,4 +1,5 @@
-#!@SHELL@
+#!/usr/bin/env bash
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 # This script first starts faked (the daemon), and then it will run
 # the requested program with fake root privileges.
@@ -30,12 +31,12 @@ fatal ()
 }
 
 # strip /bin/fakeroot to find install prefix
-FAKEROOT_PREFIX=@prefix@
-FAKEROOT_BINDIR=@bindir@
+FAKEROOT_BINDIR=$SCRIPT_DIR
+FAKEROOT_PREFIX=$SCRIPT_DIR/..
 
 USEABSLIBPATH=@LDPRELOADABS@
 FAKEROOT_LIB=lib@fakeroot_transformed@@DLSUFFIX@
-PATHS=@libdir@:${FAKEROOT_PREFIX}/lib64/libfakeroot:${FAKEROOT_PREFIX}/lib32/libfakeroot
+PATHS=${FAKEROOT_PREFIX}/lib:${FAKEROOT_PREFIX}/lib64/libfakeroot:${FAKEROOT_PREFIX}/lib32/libfakeroot
 FAKED=${FAKEROOT_BINDIR}/@faked_transformed@
 
 FAKED_MODE="unknown-is-root"
