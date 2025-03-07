@@ -24,7 +24,7 @@ BEGIN{
 
 /\/\*/{
 }
-/^(\#)/{
+/^(#)/{
   print $0 > structfile;
   print $0 > tmpffile;
   print $0 > deffile;

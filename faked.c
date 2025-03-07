@@ -614,15 +614,15 @@ int save_database(const uint32_t remote)
       continue;
 
 #ifdef FAKEROOT_DB_PATH
-    if (find_path(i->buf.dev, i->buf.ino, roots, path))
-      fprintf(f,"mode=%llo,uid=%llu,gid=%llu,nlink=%llu,rdev=%llu %s\n",
-              (uint64_t) i->buf.mode,(uint64_t) i->buf.uid,(uint64_t) i->buf.gid,
-              (uint64_t) i->buf.nlink,(uint64_t) i->buf.rdev,path);
+  if (find_path(i->buf.dev, i->buf.ino, roots, path))
+    fprintf(f,"mode=%" PRIo64 ",uid=%" PRIu64 ",gid=%" PRIu64 ",nlink=%" PRIu64 ",rdev=%" PRIu64 " %s\n",
+      (uint64_t) i->buf.mode,(uint64_t) i->buf.uid,(uint64_t) i->buf.gid,
+      (uint64_t) i->buf.nlink,(uint64_t) i->buf.rdev,path);
 #else
-    fprintf(f,"dev=%llx,ino=%llu,mode=%llo,uid=%llu,gid=%llu,nlink=%llu,rdev=%llu\n",
-            (uint64_t) i->buf.dev,(uint64_t) i->buf.ino,(uint64_t) i->buf.mode,
-            (uint64_t) i->buf.uid,(uint64_t) i->buf.gid,(uint64_t) i->buf.nlink,
-            (uint64_t) i->buf.rdev);
+  fprintf(f,"dev=%" PRIx64 ",ino=%" PRIu64 ",mode=%" PRIo64 ",uid=%" PRIu64 ",gid=%" PRIu64 ",nlink=%" PRIu64 ",rdev=%" PRIu64 "\n",
+    (uint64_t) i->buf.dev,(uint64_t) i->buf.ino,(uint64_t) i->buf.mode,
+    (uint64_t) i->buf.uid,(uint64_t) i->buf.gid,(uint64_t) i->buf.nlink,
+    (uint64_t) i->buf.rdev);
 #endif
   }
 
@@ -645,11 +645,11 @@ int load_database(const uint32_t remote)
 
   while(1){
 #ifdef FAKEROOT_DB_PATH
-    r=scanf("mode=%llo,uid=%llu,gid=%llu,nlink=%llu,rdev=%llu "DB_PATH_SCAN"\n",
-            &stmode, &stuid, &stgid, &stnlink, &strdev, &path);
+    r = scanf("mode=%" SCNo64 ",uid=%" SCNu64 ",gid=%" SCNu64 ",nlink=%" SCNu64 ",rdev=%" SCNu64 " " DB_PATH_SCAN "\n",
+              &stmode, &stuid, &stgid, &stnlink, &strdev, path);
     if (r != 6)
       break;
-
+    
     if (stat(path, &path_st) < 0) {
       fprintf(stderr, "%s: %s\n", path, strerror(errno));
       if (errno == ENOENT || errno == EACCES)
@@ -659,9 +659,9 @@ int load_database(const uint32_t remote)
     }
     stdev = path_st.st_dev;
     stino = path_st.st_ino;
-#else
-    r=scanf("dev=%llx,ino=%llu,mode=%llo,uid=%llu,gid=%llu,nlink=%llu,rdev=%llu\n",
-            &stdev, &stino, &stmode, &stuid, &stgid, &stnlink, &strdev);
+#else    
+    r = scanf("dev=%" SCNx64 ",ino=%" SCNu64 ",mode=%" SCNo64 ",uid=%" SCNu64 ",gid=%" SCNu64 ",nlink=%" SCNu64 ",rdev=%" SCNu64 "\n",
+              &stdev, &stino, &stmode, &stuid, &stgid, &stnlink, &strdev);
     if (r != 7)
       break;
 #endif
@@ -687,14 +687,14 @@ int load_database(const uint32_t remote)
 /*                               */
 /*********************************/
 void debug_stat(const struct fakestat *st){
-  fprintf(stderr,"dev:ino=(%llx:%lli), mode=0%lo, own=(%li,%li), nlink=%li, rdev=%lli\n",
-	  st->dev,
-	  st->ino,
-	  (long)st->mode,
-	  (long)st->uid,
-	  (long)st->gid,
-	  (long)st->nlink,
-	  st->rdev);
+  fprintf(stderr, "dev:ino=(%" PRIu64 ":%" PRIu64 "), mode=%lo, own=(%li,%li), nlink=%li, rdev=%" PRIu64 "\n",
+          (uint64_t)st->dev,
+          (uint64_t)st->ino,
+          (unsigned long)st->mode,
+          (long)st->uid,
+          (long)st->gid,
+          (long)st->nlink,
+          (uint64_t)st->rdev);
 }
 
 void insert_or_overwrite(struct fakestat *st,

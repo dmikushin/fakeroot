@@ -176,7 +176,7 @@ typedef int id_t;
 #ifdef HAVE_SYS_CAPABILITY_H
 #include <sys/capability.h>
 #endif
-#if HAVE_FTS_H
+#ifdef HAVE_FTS_H
 #include <fts.h>
 #endif /* HAVE_FTS_H */
 #ifdef HAVE_SYS_SYSMACROS_H

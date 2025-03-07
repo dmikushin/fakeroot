@@ -1,0 +1,404 @@
+/* config.h.in.  Generated from configure.ac by autoheader.  */
+
+/* for packed */
+#define FAKEROOT_ATTR(packed) __attribute__((packed))
+
+/* Define to 1 if you have the `acl_get_fd' function. */
+#cmakedefine HAVE_ACL_GET_FD
+
+/* acl_t data type and associated functions are provided by OS */
+#cmakedefine HAVE_ACL_T
+
+/* Define to 1 if you have the `acl_trivial' function. */
+#cmakedefine HAVE_ACL_TRIVIAL
+
+/* Define to 1 if the compiler understands __builtin_expect. */
+#cmakedefine HAVE_BUILTIN_EXPECT
+
+/* Define to 1 if you have the declaration of `setenv', and to 0 if you don't.
+   */
+#cmakedefine HAVE_DECL_SETENV
+
+/* Define to 1 if you have the declaration of `unsetenv', and to 0 if you
+   don't. */
+#cmakedefine HAVE_DECL_UNSETENV
+
+/* Define to 1 if you have the <dirent.h> header file, and it defines `DIR'.
+   */
+#cmakedefine HAVE_DIRENT_H
+
+/* Define to 1 if you have the <dlfcn.h> header file. */
+#cmakedefine HAVE_DLFCN_H
+
+/* Define to 1 if you have the <endian.h> header file. */
+#cmakedefine HAVE_ENDIAN_H
+
+/* Define to 1 if you have the `fchmodat' function. */
+#cmakedefine HAVE_FCHMODAT
+
+/* Define to 1 if you have the `fchownat' function. */
+#cmakedefine HAVE_FCHOWNAT
+
+/* Define to 1 if you have the <fcntl.h> header file. */
+#cmakedefine HAVE_FCNTL_H
+
+/* Define to 1 if you have the <features.h> header file. */
+#cmakedefine HAVE_FEATURES_H
+
+/* Define to 1 if you have the `fgetattrlist' function. */
+#cmakedefine HAVE_FGETATTRLIST
+
+/* Define to 1 if you have the `fgetxattr' function. */
+#cmakedefine HAVE_FGETXATTR
+
+/* Define to 1 if you have the `flistxattr' function. */
+#cmakedefine HAVE_FLISTXATTR
+
+/* Define to 1 if you have the `fremovexattr' function. */
+#cmakedefine HAVE_FREMOVEXATTR
+
+/* Define to 1 if you have the `fsetxattr' function. */
+#cmakedefine HAVE_FSETXATTR
+
+/* Define to 1 if you have the `fstatat' function. */
+#cmakedefine HAVE_FSTATAT
+
+/* Define to 1 if you have the `fts_children' function. */
+#cmakedefine HAVE_FTS_CHILDREN
+
+/* Define to 1 if you have the <fts.h> header file. */
+#cmakedefine HAVE_FTS_H
+
+/* Define to 1 if you have the `fts_read' function. */
+#cmakedefine HAVE_FTS_READ
+
+/* Define to 1 if you have the `getresgid' function. */
+#cmakedefine HAVE_GETRESGID
+
+/* Define to 1 if you have the `getresuid' function. */
+#cmakedefine HAVE_GETRESUID
+
+/* Define to 1 if you have the `getxattr' function. */
+#cmakedefine HAVE_GETXATTR
+
+/* Define to 1 if you have the <grp.h> header file. */
+#cmakedefine HAVE_GRP_H
+
+/* Define to 1 if you have the <inttypes.h> header file. */
+#cmakedefine HAVE_INTTYPES_H
+
+/* Define to 1 if you have the `lchmod' function. */
+#cmakedefine HAVE_LCHMOD
+
+/* Define to 1 if you have the `lgetxattr' function. */
+#cmakedefine HAVE_LGETXATTR
+
+/* Define to 1 if you have the `dl' library (-ldl). */
+#cmakedefine HAVE_LIBDL
+
+/* Define to 1 if you have the `pthread' library (-lpthread). */
+#cmakedefine HAVE_LIBPTHREAD
+
+/* Define to 1 if you have the `socket' library (-lsocket). */
+#cmakedefine HAVE_LIBSOCKET
+
+/* Define to 1 if you have the `listxattr' function. */
+#cmakedefine HAVE_LISTXATTR
+
+/* Define to 1 if you have the `llistxattr' function. */
+#cmakedefine HAVE_LLISTXATTR
+
+/* Define to 1 if you have the `lremovexattr' function. */
+#cmakedefine HAVE_LREMOVEXATTR
+
+/* Define to 1 if you have the `lsetxattr' function. */
+#cmakedefine HAVE_LSETXATTR
+
+/* Define to 1 if you have the `mkdirat' function. */
+#cmakedefine HAVE_MKDIRAT
+
+/* Define to 1 if you have the `mknodat' function. */
+#cmakedefine HAVE_MKNODAT
+
+/* Define to 1 if you have the <ndir.h> header file, and it defines `DIR'. */
+#cmakedefine HAVE_NDIR_H
+
+/* Define to 1 if you have the `openat' function. */
+#cmakedefine HAVE_OPENAT
+
+/* Define to 1 if you have the <pthread.h> header file. */
+#cmakedefine HAVE_PTHREAD_H
+
+/* Define to 1 if you have the `removexattr' function. */
+#cmakedefine HAVE_REMOVEXATTR
+
+/* Define to 1 if you have the `renameat' function. */
+#cmakedefine HAVE_RENAMEAT
+
+/* have the semun union */
+#cmakedefine HAVE_SEMUN_DEF
+
+/* Define to 1 if you have the `setenv' function. */
+#cmakedefine HAVE_SETENV
+
+/* Define to 1 if you have the `setfsgid' function. */
+#cmakedefine HAVE_SETFSGID
+
+/* Define to 1 if you have the `setfsuid' function. */
+#cmakedefine HAVE_SETFSUID
+
+/* Define to 1 if you have the `setresgid' function. */
+#cmakedefine HAVE_SETRESGID
+
+/* Define to 1 if you have the `setresuid' function. */
+#cmakedefine HAVE_SETRESUID
+
+/* Define to 1 if you have the `setxattr' function. */
+#cmakedefine HAVE_SETXATTR
+
+/* Define to 1 if you have the `statx' function. */
+#cmakedefine HAVE_STATX
+
+/* Define to 1 if you have the <stdint.h> header file. */
+#cmakedefine HAVE_STDINT_H
+
+/* Define to 1 if you have the <stdio.h> header file. */
+#cmakedefine HAVE_STDIO_H
+
+/* Define to 1 if you have the <stdlib.h> header file. */
+#cmakedefine HAVE_STDLIB_H
+
+/* Define to 1 if you have the `strdup' function. */
+#cmakedefine HAVE_STRDUP
+
+/* Define to 1 if you have the <strings.h> header file. */
+#cmakedefine HAVE_STRINGS_H
+
+/* Define to 1 if you have the <string.h> header file. */
+#cmakedefine HAVE_STRING_H
+
+/* Define to 1 if you have the `strstr' function. */
+#cmakedefine HAVE_STRSTR
+
+/* Define to 1 if you have the <sys/acl.h> header file. */
+#cmakedefine HAVE_SYS_ACL_H
+
+/* Define to 1 if you have the <sys/capability.h> header file. */
+#cmakedefine HAVE_SYS_CAPABILITY_H
+
+/* Define to 1 if you have the <sys/dir.h> header file, and it defines `DIR'.
+   */
+#cmakedefine HAVE_SYS_DIR_H
+
+/* Define to 1 if you have the <sys/feature_tests.h> header file. */
+#cmakedefine HAVE_SYS_FEATURE_TESTS_H
+
+/* Define to 1 if you have the <sys/ndir.h> header file, and it defines `DIR'.
+   */
+#cmakedefine HAVE_SYS_NDIR_H
+
+/* Define to 1 if you have the <sys/socket.h> header file. */
+#cmakedefine HAVE_SYS_SOCKET_H
+
+/* Define to 1 if you have the <sys/stat.h> header file. */
+#cmakedefine HAVE_SYS_STAT_H
+
+/* Define to 1 if you have the <sys/sysmacros.h> header file. */
+#cmakedefine HAVE_SYS_SYSMACROS_H
+
+/* Define to 1 if you have the <sys/types.h> header file. */
+#cmakedefine HAVE_SYS_TYPES_H
+
+/* Define to 1 if you have the <sys/xattr.h> header file. */
+#cmakedefine HAVE_SYS_XATTR_H
+
+/* Define to 1 if you have the <unistd.h> header file. */
+#cmakedefine HAVE_UNISTD_H
+
+/* Define to 1 if you have the `unlinkat' function. */
+#cmakedefine HAVE_UNLINKAT
+
+/* path to libc shared object */
+#cmakedefine LIBCPATH
+
+/* Define to the sub-directory where libtool stores uninstalled libraries. */
+#cmakedefine LT_OBJDIR
+
+/* Name of package */
+#cmakedefine PACKAGE
+
+/* Define to the address where bug reports for this package should be sent. */
+#cmakedefine PACKAGE_BUGREPORT
+
+/* Define to the full name of this package. */
+#cmakedefine PACKAGE_NAME
+
+/* Define to the full name and version of this package. */
+#cmakedefine PACKAGE_STRING
+
+/* Define to the one symbol short name of this package. */
+#cmakedefine PACKAGE_TARNAME
+
+/* Define to the home page for this package. */
+#cmakedefine PACKAGE_URL
+
+/* Define to the version of this package. */
+#cmakedefine PACKAGE_VERSION
+
+/* type of readlink bufsize */
+#cmakedefine READLINK_BUFSIZE_TYPE
+
+/* type of readlink buf */
+#cmakedefine READLINK_BUF_TYPE
+
+/* type of readlink return value */
+#cmakedefine READLINK_RETVAL_TYPE
+
+/* type of setgroups size */
+#define SETGROUPS_SIZE_TYPE @SETGROUPS_SIZE_TYPE@
+
+/* stat-struct conversion hackery */
+#cmakedefine STUPID_ALPHA_HACK
+
+/* time64 shuffle */
+#cmakedefine TIME64_HACK
+
+/* Version number of package */
+#define VERSION "@VERSION@"
+
+/* Define to `int' if <sys/types.h> does not define. */
+#if !@HAVE_SYS_TYPES_H@
+#define mode_t int
+#endif
+
+/* Define to `long' if <sys/types.h> does not define. */
+#if !@HAVE_SYS_TYPES_H@
+#define off_t long
+#endif
+
+/* Define to `unsigned' if <sys/types.h> does not define. */
+#if !@HAVE_SYS_TYPES_H@
+#define size_t unsigned
+#endif
+
+/* second argument of initgroups */
+#define INITGROUPS_SECOND_ARG @INITGROUPS_SECOND_ARG@
+
+/* argument of setregid */
+#define SETREGID_ARG @SETREGID_ARG@
+
+/* argument of setreuid */
+#define SETREUID_ARG @SETREUID_ARG@
+
+/* second argument of stat */
+#define STAT_SECOND_ARG @STAT_SECOND_ARG@
+
+/* fifth argument of __xmknodat */
+#define XMKNODAT_FIFTH_ARG @XMKNODAT_FIFTH_ARG@
+
+/* fourth argument of __xmknod */
+#define XMKNOD_FRTH_ARG @XMKNOD_FRTH_ARG@
+
+#if ! HAVE_BUILTIN_EXPECT
+#define __builtin_expect(x, expected_value) (x)
+#endif
+
+#ifdef HAVE_STATX
+struct statx;
+#endif
+
+/* Stuff.  */
+#define WRAP_STAT                   @WRAP_STAT@
+#define WRAP_STAT_QUOTE             @WRAP_STAT_QUOTE@
+#define WRAP_STAT_RAW               @WRAP_STAT_RAW@
+#define TMP_STAT                    @TMP_STAT@
+#define NEXT_STAT_NOARG             @NEXT_STAT_NOARG@
+#cmakedefine NO_WRAP_STAT_SYMBOL
+
+#define WRAP_LSTAT_QUOTE            @WRAP_LSTAT_QUOTE@
+#define WRAP_LSTAT                  @WRAP_LSTAT@
+#define WRAP_LSTAT_RAW              @WRAP_LSTAT_RAW@
+#define TMP_LSTAT                   @TMP_LSTAT@
+#define NEXT_LSTAT_NOARG            @NEXT_LSTAT_NOARG@
+#cmakedefine NO_WRAP_LSTAT_SYMBOL
+
+#define WRAP_FSTAT_QUOTE            @WRAP_FSTAT_QUOTE@
+#define WRAP_FSTAT                  @WRAP_FSTAT@
+#define WRAP_FSTAT_RAW              @WRAP_FSTAT_RAW@
+#define TMP_FSTAT                   @TMP_FSTAT@
+#define NEXT_FSTAT_NOARG            @NEXT_FSTAT_NOARG@
+#cmakedefine NO_WRAP_FSTAT_SYMBOL
+
+#define WRAP_FSTATAT_QUOTE          @WRAP_FSTATAT_QUOTE@
+#define WRAP_FSTATAT                @WRAP_FSTATAT@
+#define WRAP_FSTATAT_RAW            @WRAP_FSTATAT_RAW@
+#define TMP_FSTATAT                 @TMP_FSTATAT@
+#define NEXT_FSTATAT_NOARG          @NEXT_FSTATAT_NOARG@
+#cmakedefine NO_WRAP_FSTATAT_SYMBOL
+
+#define WRAP_STAT64_QUOTE           @WRAP_STAT64_QUOTE@
+#define WRAP_STAT64                 @WRAP_STAT64@
+#define WRAP_STAT64_RAW             @WRAP_STAT64_RAW@
+#define TMP_STAT64                  @TMP_STAT64@
+#define NEXT_STAT64_NOARG           @NEXT_STAT64_NOARG@
+#cmakedefine NO_WRAP_STAT64_SYMBOL
+
+#define WRAP_LSTAT64_QUOTE          @WRAP_LSTAT64_QUOTE@
+#define WRAP_LSTAT64                @WRAP_LSTAT64@
+#define WRAP_LSTAT64_RAW            @WRAP_LSTAT64_RAW@
+#define TMP_LSTAT64                 @TMP_LSTAT64@
+#define NEXT_LSTAT64_NOARG          @NEXT_LSTAT64_NOARG@
+#cmakedefine NO_WRAP_LSTAT64_SYMBOL
+
+#define WRAP_FSTAT64_QUOTE          @WRAP_FSTAT64_QUOTE@
+#define WRAP_FSTAT64                @WRAP_FSTAT64@
+#define WRAP_FSTAT64_RAW            @WRAP_FSTAT64_RAW@
+#define TMP_FSTAT64                 @TMP_FSTAT64@
+#define NEXT_FSTAT64_NOARG          @NEXT_FSTAT64_NOARG@
+#cmakedefine NO_WRAP_FSTAT64_SYMBOL
+
+#define WRAP_FSTATAT64_QUOTE        @WRAP_FSTATAT64_QUOTE@
+#define WRAP_FSTATAT64              @WRAP_FSTATAT64@
+#define WRAP_FSTATAT64_RAW          @WRAP_FSTATAT64_RAW@
+#define TMP_FSTATAT64               @TMP_FSTATAT64@
+#define NEXT_FSTATAT64_NOARG        @NEXT_FSTATAT64_NOARG@
+#cmakedefine NO_WRAP_FSTATAT64_SYMBOL
+
+#define WRAP_MKNOD_QUOTE            @WRAP_MKNOD_QUOTE@
+#define WRAP_MKNOD                  @WRAP_MKNOD@
+#define WRAP_MKNOD_RAW              @WRAP_MKNOD_RAW@
+#define TMP_MKNOD                   @TMP_MKNOD@
+#define NEXT_MKNOD_NOARG            @NEXT_MKNOD_NOARG@
+#cmakedefine NO_WRAP_MKNOD_SYMBOL
+
+#define WRAP_MKNODAT_QUOTE          @WRAP_MKNODAT_QUOTE@
+#define WRAP_MKNODAT                @WRAP_MKNODAT@
+#define WRAP_MKNODAT_RAW            @WRAP_MKNODAT_RAW@
+#define TMP_MKNODAT                 @TMP_MKNODAT@
+#define NEXT_MKNODAT_NOARG          @NEXT_MKNODAT_NOARG@
+#cmakedefine NO_WRAP_MKNODAT_SYMBOL
+
+#define WRAP_STAT64_TIME64_QUOTE    @WRAP_STAT64_TIME64_QUOTE@
+#define WRAP_STAT64_TIME64          @WRAP_STAT64_TIME64@
+#define WRAP_STAT64_TIME64_RAW      @WRAP_STAT64_TIME64_RAW@
+#define TMP_STAT64_TIME64           @TMP_STAT64_TIME64@
+#define NEXT_STAT64_TIME64_NOARG    @NEXT_STAT64_TIME64_NOARG@
+
+#define WRAP_LSTAT64_TIME64_QUOTE   @WRAP_LSTAT64_TIME64_QUOTE@
+#define WRAP_LSTAT64_TIME64         @WRAP_LSTAT64_TIME64@
+#define WRAP_LSTAT64_TIME64_RAW     @WRAP_LSTAT64_TIME64_RAW@
+#define TMP_LSTAT64_TIME64          @TMP_LSTAT64_TIME64@
+#define NEXT_LSTAT64_TIME64_NOARG   @NEXT_LSTAT64_TIME64_NOARG@
+
+#define WRAP_FSTAT64_TIME64_QUOTE   @WRAP_FSTAT64_TIME64_QUOTE@
+#define WRAP_FSTAT64_TIME64         @WRAP_FSTAT64_TIME64@
+#define WRAP_FSTAT64_TIME64_RAW     @WRAP_FSTAT64_TIME64_RAW@
+#define TMP_FSTAT64_TIME64          @TMP_FSTAT64_TIME64@
+#define NEXT_FSTAT64_TIME64_NOARG   @NEXT_FSTAT64_TIME64_NOARG@
+
+#define WRAP_FSTATAT64_TIME64_QUOTE @WRAP_FSTATAT64_TIME64_QUOTE@
+#define WRAP_FSTATAT64_TIME64       @WRAP_FSTATAT64_TIME64@
+#define WRAP_FSTATAT64_TIME64_RAW   @WRAP_FSTATAT64_TIME64_RAW@
+#define TMP_FSTATAT64_TIME64        @TMP_FSTATAT64_TIME64@
+#define NEXT_FSTATAT64_TIME64_NOARG @NEXT_FSTATAT64_TIME64_NOARG@
+
