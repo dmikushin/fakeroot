@@ -8,15 +8,23 @@ project(fakeroot VERSION ${VERSION} LANGUAGES C)
 option(WITH_TCP "Method of IPC to use: either sysv (default) or tcp" OFF)
 option(WITH_DB_PATH "Database format to use: either inode (default) or path" OFF)
 
+# This uudecode tool is required by one of the tests
+find_program(UUDECODE_EXECUTABLE uudecode)
+if(NOT UUDECODE_EXECUTABLE)
+    message(FATAL_ERROR "uudecode not found. Please install it using: sudo apt install sharutils")
+endif()
+
 add_definitions(-DHAVE_CONFIG_H)
-if (WITH_TCP)
+if(WITH_TCP)
 add_definitions(-DFAKEROOT_FAKENET)
 endif()
-if (WITH_DB_PATH)
+if(WITH_DB_PATH)
 add_definitions(-DFAKEROOT_DB_PATH)
 endif()
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 include(CheckCSourceCompiles)
 include(CheckIncludeFile)
@@ -253,6 +261,37 @@ configure_file(
     @ONLY
 )
 
+if(CMAKE_C_COMPILER_TARGET_DARWIN)
+  set(libcpath "/usr/lib/libSystem.dylib")
+  set(DLSUFFIX ".dylib")
+  set(LDLIBPATHVAR "DYLD_LIBRARY_PATH")
+  set(LDPRELOADVAR "DYLD_INSERT_LIBRARIES")
+  set(LDPRELOADABS 1)
+  set(LDEXTRAVAR "")
+else()
+  set(libcpath "libc.so.6")
+  set(DLSUFFIX ".so")
+  set(LDLIBPATHVAR "LD_LIBRARY_PATH")
+  set(LDPRELOADVAR "LD_PRELOAD")
+  set(LDPRELOADABS 0)
+  set(LDEXTRAVAR "")
+endif()
+
+# Configure fakeroot startup script
+set(signal TERM)
+configure_file(
+    scripts/fakeroot.in
+    ${CMAKE_CURRENT_BINARY_DIR}/fakeroot
+    @ONLY
+)
+
+# Configure defs.in for tests
+configure_file(
+    test/defs.in
+    ${CMAKE_CURRENT_BINARY_DIR}/defs
+    @ONLY
+)
+
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 add_library(communicate STATIC communicate.c)
@@ -287,10 +326,10 @@ target_compile_definitions(fakeroot_time64 PRIVATE _FILE_OFFSET_BITS=64 _TIME_BI
 add_dependencies(fakeroot_time64 generate_wraps)
 
 add_library(fakeroot SHARED libfakeroot.c)
-target_link_libraries(fakeroot PRIVATE fakeroot_time64 ${CMAKE_DL_LIBS})
+target_link_libraries(fakeroot PRIVATE communicate fakeroot_time64 ${CMAKE_DL_LIBS})
 add_dependencies(fakeroot generate_wraps)
 
-if (CMAKE_C_COMPILER_TARGET_DARWIN)
+if(CMAKE_C_COMPILER_TARGET_DARWIN)
     add_library(fakeroot_macosx STATIC libfakeroot_inode64.c libfakeroot_unix2003.c)
     add_dependencies(fakeroot_macosx generate_wraps)
     target_link_libraries(fakeroot PRIVATE fakeroot_macosx)
@@ -301,3 +340,32 @@ include(GNUInstallDirs)
 install(TARGETS faked fakeroot
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+
+install(PROGRAMS fakeroot DESTINATION ${CMAKE_INSTALL_BINDIR})
+
+enable_testing()
+
+set(tests 
+    TestChmodDev:test/t.chmod_dev
+    TestChown:test/t.chown
+    TestCpA:test/t.cp-a
+    TestEchoArg:test/t.echoarg
+    TestFalseReturn:test/t.falsereturn
+    TestMknod:test/t.mknod
+    TestNoLdPreload:test/t.no_ld_preload
+    TestNoLdPreloadLink:test/t.no_ld_preload_link
+    TestOption:test/t.option
+    TestTar:test/t.tar
+    TestTouchInstall:test/t.touchinstall
+    TestTrueReturn:test/t.truereturn
+    TestXattr:test/t.xattr
+)
+
+foreach(test ${tests})
+    string(REPLACE ":" ";" test_info ${test})
+    list(GET test_info 0 test_name)
+    list(GET test_info 1 test_command)
+    add_test(NAME ${test_name} COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/${test_command})
+    set_property(TEST ${test_name} PROPERTY ENVIRONMENT posixshell=/bin/sh srcdir=${CMAKE_CURRENT_SOURCE_DIR}/test libfakeroot=$<TARGET_FILE:fakeroot>)
+endforeach()
+

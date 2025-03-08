@@ -15,9 +15,9 @@ esac
 
 run_fakeroot ()
 {
-  tmp="$tmp"                                    \
-  $PWD/../scripts/fakeroot${tcp}                \
-      -f $PWD/../faked${tcp}                    \
-      -l $PWD/../.libs/${libfakeroot}           \
-       "$@"
+  tmp="$tmp"                                       \
+  @CMAKE_CURRENT_BINARY_DIR@/fakeroot${tcp}        \
+      -f @CMAKE_CURRENT_BINARY_DIR@/faked${tcp}    \
+      -l ${libfakeroot} \
+      "$@"
 }
